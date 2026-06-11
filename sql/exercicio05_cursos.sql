@@ -1,7 +1,3 @@
--- =====================================================
--- Exercício 5 - Gerenciamento de Cursos e Alunos
--- =====================================================
-
 CREATE DATABASE IF NOT EXISTS plataforma_cursos;
 USE plataforma_cursos;
 
@@ -18,8 +14,6 @@ CREATE TABLE Cursos (
     instrutor VARCHAR(100)
 );
 
--- Tabela de junção: resolve o muitos-para-muitos.
--- Um aluno faz vários cursos; um curso tem vários alunos.
 CREATE TABLE Matriculas (
     aluno_id INT,
     curso_id INT,
@@ -30,9 +24,6 @@ CREATE TABLE Matriculas (
     FOREIGN KEY (curso_id) REFERENCES Cursos(id)
 );
 
--- -----------------------------------------------------
--- Dados de exemplo
--- -----------------------------------------------------
 INSERT INTO Alunos (nome, email) VALUES
 ('Ana Silva', 'ana@email.com'),
 ('Bruno Costa', 'bruno@email.com'),
@@ -45,14 +36,11 @@ INSERT INTO Cursos (titulo, descricao, instrutor) VALUES
 
 INSERT INTO Matriculas (aluno_id, curso_id, data_matricula, status) VALUES
 (1, 1, '2025-01-10', 'Ativa'),
-(1, 2, '2025-01-10', 'Ativa'),   -- Ana faz 2 cursos
-(2, 1, '2025-01-12', 'Ativa'),   -- Java tem 2 alunos
+(1, 2, '2025-01-10', 'Ativa'),
+(2, 1, '2025-01-12', 'Ativa'),
 (2, 3, '2025-01-12', 'Concluída'),
 (3, 2, '2025-01-15', 'Ativa');
 
--- -----------------------------------------------------
--- Consulta 1: todos os cursos em que um aluno está matriculado
--- -----------------------------------------------------
 SELECT
     Alunos.nome AS aluno,
     Cursos.titulo AS curso,

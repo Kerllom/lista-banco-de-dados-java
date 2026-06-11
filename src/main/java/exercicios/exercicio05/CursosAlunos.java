@@ -5,11 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * Exercício 5 - Gerenciamento de Cursos e Alunos
- * Duas consultas: cursos de um aluno e alunos de um curso.
- * Rode sql/exercicio05_cursos.sql ANTES de executar.
- */
 public class CursosAlunos {
 
     private static final String URL = "jdbc:mysql://localhost:3306/plataforma_cursos";

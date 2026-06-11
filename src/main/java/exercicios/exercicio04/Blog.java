@@ -5,11 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * Exercício 4 - Sistema de Blog Simples
- * Lista os posts de uma categoria com a contagem de comentários de cada um.
- * Rode sql/exercicio04_blog.sql ANTES de executar.
- */
 public class Blog {
 
     private static final String URL = "jdbc:mysql://localhost:3306/blog";
