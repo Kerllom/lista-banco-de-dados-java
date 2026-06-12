@@ -5,11 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * Exercício 7 - Sistema de Eventos e Participantes
- * Lista os participantes de um evento que já pagaram a inscrição.
- * Rode sql/exercicio07_eventos.sql ANTES de executar.
- */
 public class Eventos {
 
     private static final String URL = "jdbc:mysql://localhost:3306/eventos";
