@@ -16,6 +16,8 @@ CREATE TABLE Participantes (
     telefone VARCHAR(20)
 );
 
+-- Tabela de junção: muitos-para-muitos entre Eventos e Participantes.
+-- Um participante se inscreve em vários eventos; um evento tem vários inscritos.
 CREATE TABLE Inscricoes (
     evento_id INT,
     participante_id INT,
@@ -26,8 +28,10 @@ CREATE TABLE Inscricoes (
     FOREIGN KEY (participante_id) REFERENCES Participantes(id)
 );
 
+-- Índice para acelerar buscas por status de pagamento (dica do enunciado)
 CREATE INDEX idx_status_pagamento ON Inscricoes(status_pagamento);
 
+-- Dados de exemplo
 INSERT INTO Eventos (nome, data_evento, local, descricao) VALUES
 ('Workshop de Java', '2025-03-10', 'Auditório A', 'Imersão em Java'),
 ('Meetup de Dados', '2025-03-20', 'Sala 5', 'Encontro sobre bancos de dados');
@@ -43,6 +47,7 @@ INSERT INTO Inscricoes (evento_id, participante_id, data_inscricao, status_pagam
 (1, 3, '2025-02-03', 'pago'),
 (2, 1, '2025-02-05', 'pago');
 
+-- Consulta: participantes de um evento que JÁ PAGARAM
 SELECT
     Participantes.nome,
     Participantes.email,

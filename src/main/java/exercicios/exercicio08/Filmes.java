@@ -5,11 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * Exercício 8 - Sistema de Avaliação de Filmes
- * Calcula a média de avaliação de um filme e lista seus comentários.
- * Rode sql/exercicio08_filmes.sql ANTES de executar.
- */
 public class Filmes {
 
     private static final String URL = "jdbc:mysql://localhost:3306/avaliacao_filmes";

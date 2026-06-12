@@ -14,6 +14,8 @@ CREATE TABLE Cursos (
     instrutor VARCHAR(100)
 );
 
+-- Tabela de junção: resolve o muitos-para-muitos.
+-- Um aluno faz vários cursos; um curso tem vários alunos.
 CREATE TABLE Matriculas (
     aluno_id INT,
     curso_id INT,
@@ -24,6 +26,7 @@ CREATE TABLE Matriculas (
     FOREIGN KEY (curso_id) REFERENCES Cursos(id)
 );
 
+-- Dados de exemplo
 INSERT INTO Alunos (nome, email) VALUES
 ('Ana Silva', 'ana@email.com'),
 ('Bruno Costa', 'bruno@email.com'),
@@ -41,6 +44,7 @@ INSERT INTO Matriculas (aluno_id, curso_id, data_matricula, status) VALUES
 (2, 3, '2025-01-12', 'Concluída'),
 (3, 2, '2025-01-15', 'Ativa');
 
+-- Consulta 1: todos os cursos em que um aluno está matriculado
 SELECT
     Alunos.nome AS aluno,
     Cursos.titulo AS curso,
@@ -50,6 +54,7 @@ INNER JOIN Alunos ON Matriculas.aluno_id = Alunos.id
 INNER JOIN Cursos ON Matriculas.curso_id = Cursos.id
 WHERE Alunos.id = 1;
 
+-- Consulta 2: todos os alunos matriculados em um curso
 SELECT
     Cursos.titulo AS curso,
     Alunos.nome AS aluno,

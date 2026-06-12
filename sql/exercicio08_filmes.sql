@@ -15,6 +15,8 @@ CREATE TABLE Filmes (
     genero VARCHAR(50)
 );
 
+-- Avaliações: liga usuário e filme, guardando a nota e o comentário.
+-- nota é DECIMAL(3,1): até 3 dígitos no total, 1 casa decimal (ex.: 9.5)
 CREATE TABLE Avaliacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
@@ -26,6 +28,7 @@ CREATE TABLE Avaliacoes (
     FOREIGN KEY (filme_id) REFERENCES Filmes(id)
 );
 
+-- Dados de exemplo
 INSERT INTO Usuarios (nome, email) VALUES
 ('Ana Silva', 'ana@email.com'),
 ('Bruno Costa', 'bruno@email.com'),
@@ -42,6 +45,9 @@ INSERT INTO Avaliacoes (usuario_id, filme_id, nota, comentario, data_avaliacao) 
 (1, 2, 10.0, 'Obra-prima brasileira', '2025-01-13'),
 (2, 2, 9.5, 'Forte e realista', '2025-01-14');
 
+-- Consulta 1: média de avaliação de um filme
+-- AVG calcula a média das notas; COUNT conta quantas avaliações há.
+-- GROUP BY agrupa por filme para a média ser feita filme a filme.
 SELECT
      F.titulo,
      AVG(A.nota) AS media_nota,
@@ -51,6 +57,7 @@ SELECT
  WHERE F.id = 1
  GROUP BY F.id, F.titulo;
 
+-- Consulta 2: todos os comentários de um filme
 SELECT
     U.nome AS usuario,
     A.nota,

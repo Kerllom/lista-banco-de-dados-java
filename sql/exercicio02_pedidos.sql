@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS loja_online;
 USE loja_online;
 
+-- Clientes: quem faz os pedidos
 CREATE TABLE Clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -8,6 +9,7 @@ CREATE TABLE Clientes (
     endereco VARCHAR(200)
 );
 
+-- Produtos: o que a loja vende
 CREATE TABLE Produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -15,6 +17,7 @@ CREATE TABLE Produtos (
     estoque INT
 );
 
+-- Pedidos: cada compra feita por um cliente (relação 1:N com Clientes)
 CREATE TABLE Pedidos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT,
@@ -22,7 +25,8 @@ CREATE TABLE Pedidos (
     status VARCHAR(30),
     FOREIGN KEY (cliente_id) REFERENCES Clientes(id)
 );
-
+-- ItensPedido: a tabela que resolve o muitos-para-muitos.
+-- Liga cada Pedido aos Produtos que ele contém.
 CREATE TABLE ItensPedido (
     pedido_id INT,
     produto_id INT,
